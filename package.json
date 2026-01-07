@@ -1,0 +1,31 @@
+{
+  "name": "hockey-club-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de gestão para clube de hóquei sobre grama",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @hockey-club/web dev",
+    "dev:api": "pnpm --filter @hockey-club/api dev",
+    "build": "pnpm -r build",
+    "build:web": "pnpm --filter @hockey-club/web build",
+    "build:api": "pnpm --filter @hockey-club/api build",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "keywords": [
+    "hockey",
+    "club-management",
+    "vue3",
+    "nestjs",
+    "typescript"
+  ],
+  "author": "Hockey Club Team",
+  "license": "MIT"
+}

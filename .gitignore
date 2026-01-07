@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.log
+
+# Production
+dist/
+build/
+*.local
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.tsbuildinfo
+.eslintcache
