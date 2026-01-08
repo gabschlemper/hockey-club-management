@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { AuthModule } from './auth/auth.module'
 
 /**
  * App Module
@@ -22,8 +23,10 @@ import { AppService } from './app.service'
       envFilePath: '.env',
     }),
 
-    // Feature modules (Phase 2)
-    // AuthModule,
+    // Feature modules
+    AuthModule,
+    
+    // Phase 2 modules
     // UsersModule,
     // EventsModule,
     // AttendanceModule,

@@ -3,38 +3,18 @@ import { ref, computed } from 'vue'
 import { useAuth } from '@/composables'
 import { designTokens } from '@/lib/design-tokens'
 
-/**
- * Login Page Component
- * 
- * Handles user authentication with email and password.
- * Includes client-side validation and error handling.
- * 
- * Following Clean Architecture:
- * - Presentation layer only
- * - Business logic delegated to useAuth composable
- * - Validation rules defined separately
- */
-
-// Composables
 const { login, isLoading, error, clearError } = useAuth()
 
-// Form state
 const email = ref('')
 const password = ref('')
 const showPassword = ref(false)
-
-// Validation state
 const emailError = ref('')
 const passwordError = ref('')
 
-// Computed
 const isFormValid = computed(() => {
   return email.value && password.value && !emailError.value && !passwordError.value
 })
 
-/**
- * Validate email format
- */
 function validateEmail(): void {
   if (!email.value) {
     emailError.value = 'Email é obrigatório'
@@ -50,9 +30,6 @@ function validateEmail(): void {
   emailError.value = ''
 }
 
-/**
- * Validate password
- */
 function validatePassword(): void {
   if (!password.value) {
     passwordError.value = 'Senha é obrigatória'
@@ -67,36 +44,23 @@ function validatePassword(): void {
   passwordError.value = ''
 }
 
-/**
- * Handle form submission
- */
 async function handleSubmit(): Promise<void> {
-  // Clear previous errors
   clearError()
   emailError.value = ''
   passwordError.value = ''
 
-  // Validate fields
   validateEmail()
   validatePassword()
 
-  // Stop if validation fails
-  if (!isFormValid.value) {
-    return
-  }
+  if (!isFormValid.value) return
 
   try {
     await login(email.value, password.value)
-    // Navigation handled by useAuth composable
   } catch (err) {
-    // Error is displayed from the store
     console.error('Login failed:', err)
   }
 }
 
-/**
- * Clear field error on input
- */
 function clearFieldError(field: 'email' | 'password'): void {
   if (field === 'email') {
     emailError.value = ''
@@ -234,7 +198,7 @@ function clearFieldError(field: 'email' | 'password'): void {
         <!-- Test Accounts Info -->
         <div class="mt-8 pt-6 border-t border-border">
           <p class="text-sm text-muted-foreground mb-3">
-            Contas de teste (Fase 1):
+            Contas de teste:
           </p>
           <div class="space-y-2 text-sm">
             <div class="p-3 rounded-md bg-accent/50">

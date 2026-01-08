@@ -4,21 +4,8 @@ import AthleteLayout from '@/layouts/AthleteLayout.vue'
 import { useAuth } from '@/composables'
 import { designTokens } from '@/lib/design-tokens'
 
-/**
- * Athlete Dashboard Page
- * 
- * Main dashboard for athletes showing:
- * - Personal stats
- * - Upcoming events
- * - Debt status
- * - Quick info
- * 
- * Limited view compared to admin dashboard
- */
-
 const { fullName } = useAuth()
 
-// Mock data for Phase 1
 const athleteStats = ref({
   attendanceRate: 85,
   upcomingEvents: 2,
@@ -36,15 +23,11 @@ const recentActivity = ref([
   { id: 2, text: 'Mensalidade paga', date: '2026-01-03', icon: '💳' },
 ])
 
-onMounted(() => {
-  console.log('Athlete Dashboard mounted')
-})
 </script>
 
 <template>
   <AthleteLayout>
     <div class="space-y-6">
-      <!-- Welcome Header -->
       <div>
         <h1 class="text-3xl font-bold text-foreground mb-2">
           Olá, {{ fullName }}! 🏑
@@ -54,9 +37,7 @@ onMounted(() => {
         </p>
       </div>
 
-      <!-- Stats Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Attendance Rate -->
         <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">📊</span>
@@ -70,7 +51,6 @@ onMounted(() => {
           <p class="text-sm text-muted-foreground mt-1">Taxa de Presença</p>
         </div>
 
-        <!-- Upcoming Events -->
         <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">📅</span>
@@ -79,7 +59,6 @@ onMounted(() => {
           <p class="text-sm text-muted-foreground mt-1">Próximos Eventos</p>
         </div>
 
-        <!-- Pending Debts Count -->
         <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">💳</span>
@@ -94,7 +73,6 @@ onMounted(() => {
           <p class="text-sm text-muted-foreground mt-1">Dívidas Abertas</p>
         </div>
 
-        <!-- Total Debt Amount -->
         <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
           <div class="flex items-center justify-between mb-2">
             <span class="text-2xl">💰</span>
@@ -106,9 +84,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Main Content Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Upcoming Events -->
         <div class="lg:col-span-2 bg-card border border-border rounded-lg p-6 shadow-sm">
           <h2 class="text-xl font-semibold text-foreground mb-4">
             Próximos Eventos
@@ -138,12 +114,8 @@ onMounted(() => {
               </button>
             </div>
           </div>
-          <p class="text-xs text-muted-foreground mt-4 text-center">
-            Detalhes disponíveis na Fase 2
-          </p>
         </div>
 
-        <!-- Recent Activity -->
         <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
           <h2 class="text-xl font-semibold text-foreground mb-4">
             Atividade Recente
@@ -162,56 +134,6 @@ onMounted(() => {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Financial Summary (Club-wide) -->
-      <div class="bg-card border border-border rounded-lg p-6 shadow-sm">
-        <h2 class="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-          <span>📈</span>
-          Saúde Financeira do Clube
-        </h2>
-        <p class="text-sm text-muted-foreground mb-4">
-          Transparência sobre as finanças do clube (sem dados individuais)
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="p-4 rounded-md bg-green-50 border border-green-200">
-            <p class="text-sm text-green-700 font-medium mb-1">Receitas</p>
-            <p class="text-2xl font-bold text-green-900">R$ 15.000</p>
-          </div>
-          <div class="p-4 rounded-md bg-red-50 border border-red-200">
-            <p class="text-sm text-red-700 font-medium mb-1">Despesas</p>
-            <p class="text-2xl font-bold text-red-900">R$ 8.500</p>
-          </div>
-          <div class="p-4 rounded-md bg-blue-50 border border-blue-200">
-            <p class="text-sm text-blue-700 font-medium mb-1">Saldo</p>
-            <p class="text-2xl font-bold text-blue-900">R$ 6.500</p>
-          </div>
-        </div>
-        <p class="text-xs text-muted-foreground mt-4 text-center">
-          Dados de exemplo - Fase 2 terá dados reais
-        </p>
-      </div>
-
-      <!-- Info Banner -->
-      <div 
-        class="border-2 rounded-lg p-6"
-        :style="{ 
-          borderColor: designTokens.colors.primary.DEFAULT,
-          backgroundColor: designTokens.colors.primary.DEFAULT + '10'
-        }"
-      >
-        <div class="flex items-start gap-4">
-          <span class="text-3xl">💡</span>
-          <div class="flex-1">
-            <h3 class="text-lg font-semibold text-foreground mb-2">
-              Sistema em Desenvolvimento
-            </h3>
-            <p class="text-sm text-muted-foreground">
-              Esta é a Fase 1 (MVP). Em breve você poderá visualizar detalhes completos de eventos, 
-              seu histórico de presenças, gerenciar suas dívidas e muito mais!
-            </p>
           </div>
         </div>
       </div>
